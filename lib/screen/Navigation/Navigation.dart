@@ -2,7 +2,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:okbhaiya/Page/FoodMenu.dart';
 import 'package:okbhaiya/Page/Home.dart';
+import 'package:okbhaiya/Page/Inventory.dart';
+import 'package:okbhaiya/Page/Manage.dart';
+import 'package:okbhaiya/Page/Orders.dart';
 import 'package:okbhaiya/main.dart';
 
 import 'package:okbhaiya/models/Navigation.dart';
@@ -151,17 +155,93 @@ class _NavitionRouteState extends State<NavitionRoute> {
   }
 
   getNavigationPage(BuildContext context) {
-    if (item == NavitionItems.doctors) {
-      return Container();
-    } else if (item == NavitionItems.logout) {
-      context.read(authServiceProvider).signOut().then((value) {
-        Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => AuthenticationWrapper(),
-        ));
-      });
+    if (item == NavitionItems.home) {
+      return Container(
+        child: HomePage(
+          user: widget.user,
+          openDrawer: openDrawer,
+          currentUser: currentuser,
+        ),
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.teal.shade900.withOpacity(0.8),
+              blurRadius: 24.0,
+            ),
+          ],
+        ),
+      );
+    } else if (item == NavitionItems.order) {
+      return Container(
+        child: Orders(
+          user: widget.user,
+          openDrawer: openDrawer,
+          currentUser: currentuser,
+        ),
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.teal.shade900.withOpacity(0.8),
+              blurRadius: 24.0,
+            ),
+          ],
+        ),
+      );
+    } else if (item == NavitionItems.foodMenu) {
+      return Container(
+        child: FoodMenu(
+          user: widget.user,
+          openDrawer: openDrawer,
+          currentUser: currentuser,
+        ),
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.teal.shade900.withOpacity(0.8),
+              blurRadius: 24.0,
+            ),
+          ],
+        ),
+      );
+    } else if (item == NavitionItems.inventory) {
+      return Container(
+        child: Inventory(
+          user: widget.user,
+          openDrawer: openDrawer,
+          currentUser: currentuser,
+        ),
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.teal.shade900.withOpacity(0.8),
+              blurRadius: 24.0,
+            ),
+          ],
+        ),
+      );
+    } else if (item == NavitionItems.manage) {
+      return Container(
+        child: ManageProfile(
+          user: widget.user,
+          openDrawer: openDrawer,
+          currentUser: currentuser,
+        ),
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.teal.shade900.withOpacity(0.8),
+              blurRadius: 24.0,
+            ),
+          ],
+        ),
+      );
     } else {
       return Container(
-        child: HomePage(user: widget.user, openDrawer: openDrawer),
+        child: ManageProfile(
+          user: widget.user,
+          openDrawer: openDrawer,
+          currentUser: currentuser,
+        ),
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(

@@ -5,7 +5,17 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ImagePickerWidget extends StatefulWidget {
-  const ImagePickerWidget({Key? key}) : super(key: key);
+  String imageUrl;
+  double width;
+  double height;
+  final Function(String path, String imagename) onImageSelected;
+  ImagePickerWidget(
+      {Key? key,
+      this.imageUrl = 'none',
+      this.width = 100,
+      this.height = 100,
+      required this.onImageSelected})
+      : super(key: key);
 
   @override
   _ImagePickerWidgetState createState() => _ImagePickerWidgetState();
@@ -22,67 +32,62 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
     setState(() {
       _image = imagePath;
     });
+    widget.onImageSelected(imagePath.path, imageName.path);
   }
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.only(top: 16.0),
-        child: _image == null
-            ? InkWell(
-                onTap: pickImage,
-                child: Stack(
-                  children: [
-                    Center(
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(20.0),
-                        child: Container(
-                          height: 150,
-                          width: 150,
-                          color: Theme.of(context).scaffoldBackgroundColor,
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      bottom: 50,
-                      left: MediaQuery.of(context).size.width / 2 - 65,
-                      child: Center(
-                        child: Icon(
-                          CupertinoIcons.photo_camera,
-                          size: 100,
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      bottom: 20,
-                      left: MediaQuery.of(context).size.width / 2 - 80,
-                      child: Center(
-                        child: Text('Upload Your Logo',
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                color: Theme.of(context).indicatorColor)),
-                      ),
-                    ),
-                  ],
-                ),
-              )
-            : SizedBox(
-                height: 150,
-                width: 150,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(8.0),
-                  child: AspectRatio(
-                    aspectRatio: 1 / 1,
-                    child: Image.file(
-                      _image!,
-                      fit: BoxFit.fill,
-                    ),
+    return InkWell(
+      onTap: widget.imageUrl == 'none' ? pickImage : () {},
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(10.0),
+        child: Container(
+          height: widget.height,
+          width: widget.width,
+          decoration: BoxDecoration(
+            // border: Border.all(color: Color(0xfff72585), width: 6),
+            color: const Color(0xffe5e5e5),
+            image: widget.imageUrl == 'none' || _image == null
+                ? DecorationImage(
+                    image: NetworkImage(widget.imageUrl),
+                    fit: BoxFit.cover,
+                  )
+                : DecorationImage(
+                    image: FileImage(_image!),
+                    fit: BoxFit.cover,
                   ),
-                ),
-              ),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: widget.imageUrl == 'none' && _image == null
+                ? CircleAvatar(
+                    radius: 30,
+                    backgroundColor: Colors.transparent,
+                    child: Image.asset(
+                      'assets/images/upload.png',
+                      fit: BoxFit.cover,
+                    ),
+                  )
+                : null,
+          ),
+        ),
       ),
     );
   }
 }
+
+
+// SizedBox(
+//                 height: 150,
+//                 width: 150,
+//                 child: ClipRRect(
+//                   borderRadius: BorderRadius.circular(8.0),
+//                   child: AspectRatio(
+//                     aspectRatio: 1 / 1,
+//                     child: Image.file(
+//                       _image!,
+//                       fit: BoxFit.fill,
+//                     ),
+//                   ),
+//                 ),
+//               ),

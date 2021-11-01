@@ -10,11 +10,11 @@ import 'package:okbhaiya/provider/AuthenticationProvider.dart';
 import 'package:okbhaiya/utils/customStyle.dart';
 
 // ignore: must_be_immutable
-class HomePage extends StatefulWidget {
+class Inventory extends StatefulWidget {
   User user;
   BusinessUser currentUser;
   VoidCallback openDrawer;
-  HomePage({
+  Inventory({
     Key? key,
     required this.user,
     required this.currentUser,
@@ -22,10 +22,10 @@ class HomePage extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  _InventoryState createState() => _InventoryState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _InventoryState extends State<Inventory> {
   bool verified = false;
   bool isLoading = false;
   @override
@@ -50,18 +50,6 @@ class _HomePageState extends State<HomePage> {
             return <Widget>[
               SliverAppBar(
                 // expandedHeight: 55.0,
-                actions: [
-                  Switch(
-                    value: verified,
-                    onChanged: (value) {
-                      setState(() {
-                        verified = value;
-                      });
-                    },
-                    activeTrackColor: Colors.lightGreenAccent,
-                    activeColor: Colors.green,
-                  ),
-                ],
                 elevation: 1,
                 floating: true,
                 leading: Padding(
@@ -90,7 +78,7 @@ class _HomePageState extends State<HomePage> {
                 pinned: true,
                 centerTitle: true,
                 title: Text(
-                  'Dashbord',
+                  'Inventory',
                   style: header,
                 ),
                 flexibleSpace: Padding(
@@ -107,7 +95,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
-class LiteRollingSwitch {}
-
-class CustomSwitch {}

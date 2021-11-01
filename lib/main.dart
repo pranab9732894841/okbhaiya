@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:okbhaiya/Page/Manage.dart';
 import 'package:okbhaiya/provider/AuthenticationProvider.dart';
 
 import 'package:okbhaiya/screen/CheakRegistation.dart';
@@ -57,10 +58,12 @@ class AuthenticationWrapper extends ConsumerWidget {
     return _authState.when(
         data: (user) {
           if (user != null) {
+            print(user.phoneNumber);
+            print(user.uid);
             return CheakRegistation(
                 user: user); // CheakRegistation(user: user);
           }
-          return OnbordScreen();
+          return OnbordScreen(); //OnbordScreen(); ManageProfile()
         },
         loading: () {
           return LoaadingWindow();

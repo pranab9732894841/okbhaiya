@@ -3,20 +3,25 @@
 class NavitionItem {
   String titel;
   String icon;
-
-  NavitionItem({required this.titel, required this.icon});
+  String type;
+  NavitionItem({
+    required this.titel,
+    required this.icon,
+    required this.type,
+  });
 }
 
 class NavitionItems {
-  static NavitionItem home =
-      NavitionItem(titel: "Dashbord", icon: "assets/icons/dashboard.svg");
-  static NavitionItem doctors =
-      NavitionItem(titel: "Doctors", icon: "assets/icons/doctor.svg");
-  static NavitionItem appoinment =
-      NavitionItem(titel: "Appointments", icon: "assets/icons/calendar.svg");
-  static NavitionItem earning =
-      NavitionItem(titel: "Earning", icon: "assets/icons/income.svg");
-  static NavitionItem logout =
-      NavitionItem(titel: "Logout", icon: "assets/icons/logout.svg");
-  static List<NavitionItem> all = [home, doctors, appoinment, earning, logout];
+  static NavitionItem home = NavitionItem(
+      titel: "Dashbord", icon: "assets/icons/menu.svg", type: "food");
+  static NavitionItem foodMenu =
+      NavitionItem(titel: "Menu ", icon: "assets/icons/food.svg", type: "food");
+  static NavitionItem order = NavitionItem(
+      titel: "Orders", icon: "assets/icons/bill.svg", type: "food");
+  static NavitionItem inventory = NavitionItem(
+      titel: "Inventory", icon: "assets/icons/inventory.svg", type: "food");
+  static NavitionItem manage = NavitionItem(
+      titel: "Manage", icon: "assets/icons/settings.svg", type: "all");
+
+  static List<NavitionItem> all = [home, order, foodMenu, inventory, manage];
 }

@@ -68,7 +68,7 @@ class _BusinessDetailsState extends State<BusinessDetails> {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            ImagePickerWidget(),
+            // ImagePickerWidget(),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(4.0),

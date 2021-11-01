@@ -11,8 +11,7 @@ class OnbordScreen extends StatelessWidget {
   List<PageViewModel> getScreens(context) {
     return [
       PageViewModel(
-        image: Image.network(
-            'https://ik.imagekit.io/tltdafwyfpa/onbor1-_okbhaiya_ttED40agAij.png?updatedAt=1635504497549'),
+        image: Image.asset('assets/images/onbord.png'),
         title: 'Digitize your way of doing business ',
         body:
             'Pre built Digital Product application for your outlet with customized option. So just kick start your business.',

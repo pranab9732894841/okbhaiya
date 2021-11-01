@@ -52,6 +52,10 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
 
+  geolocator: ^7.7.1
+  permission_handler: ^8.2.5
+  lite_rolling_switch: ^0.1.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -103,11 +107,9 @@ flutter:
     - assets/images/success.gif
     - assets/images/helper.gif
     - assets/images/category.gif
-    - assets/images/plasterLoading.gif
+    - assets/images/onbord.png
     - assets/images/place.gif
-    - assets/images/happycheck.gif
-    - assets/images/docFemale.jpg
-    - assets/images/docMale.jpg
+    - assets/images/upload.png
     - assets/images/searching.gif
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

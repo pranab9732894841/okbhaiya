@@ -153,7 +153,17 @@ class _AuthenticationState extends State<Authentication> {
                                 context
                                     .read(authServiceProvider)
                                     .signInWithOTP(verificationCode, _otp)
-                                    .then((value) => isLoading = false);
+                                    .then((value) => {
+                                          Future.delayed(
+                                              Duration(milliseconds: 800), () {
+                                            Navigator.of(context)
+                                                .push(MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        AuthenticationWrapper()))
+                                                .catchError(
+                                                    (e) => {print(e.message)});
+                                          })
+                                        });
                               });
                             },
                           ),
@@ -195,10 +205,12 @@ class _AuthenticationState extends State<Authentication> {
                                           .read(authServiceProvider)
                                           .signInWithOTP(verificationCode, _otp)
                                           .then((value) => {
-                                                Navigator.of(context).push(
-                                                    MaterialPageRoute(
+                                                Navigator.of(context)
+                                                    .push(MaterialPageRoute(
                                                         builder: (context) =>
                                                             AuthenticationWrapper()))
+                                                    .catchError((e) =>
+                                                        {print(e.message)})
                                               })
                                       : onSendOTPPressed();
                                 });
