@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "45542505700",
+    "project_id": "kingpos-188d8",
+    "storage_bucket": "kingpos-188d8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:45542505700:android:967a3ff24d05b43d4240f1",
+        "android_client_info": {
+          "package_name": "com.growpos.okbhaiya"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "45542505700-tcr8fm0hii4va5bk1effib30tfsicsvd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.growpos.okbhaiya",
+            "certificate_hash": "6300599b78eedd3f6a44ab26a718b88b64122803"
+          }
+        },
+        {
+          "client_id": "45542505700-hsl37n11jmme3ljvdjdq0d3u1jlh4ccr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbcJeAn9nwKD-JmCOFR1oe5jzTvFeVfyQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "45542505700-hsl37n11jmme3ljvdjdq0d3u1jlh4ccr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
